@@ -1,0 +1,62 @@
+plugins {
+    alias(libs.plugins.android.application)
+//    alias(libs.plugins.kotlin.android)
+}
+
+android {
+    namespace 'com.example.alertproject'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.alertproject"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+//        compose true
+    }
+
+    packaging {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.junit
+    androidTestImplementation libs.androidx.espresso.core
+    androidTestImplementation platform(libs.androidx.compose.bom)
+    implementation 'androidx.appcompat:appcompat:1.6.1' // 최신 버전으로 설치함
+    // other dependencies
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    // AndroidX CoordinatorLayout
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
+
+    // Material Design library for FloatingActionButton
+    implementation 'com.google.android.material:material:1.9.0'
+
+    // RecyclerView (if not already added)
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+}
